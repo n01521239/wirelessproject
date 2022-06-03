@@ -11,5 +11,5 @@ for content_file in contents:
     print(content_file)
 
 user = my_git.get_user()
-repo = user.create_repo('test')
+repo = user.create_repo('projectdemo')
 repo.create_file("text.txt","commit","this is test")

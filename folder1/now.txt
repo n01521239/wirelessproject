@@ -1,6 +1,6 @@
 Building configuration...
 
-Current configuration : 969 bytes
+Current configuration : 987 bytes
 !
 version 12.4
 service timestamps debug datetime msec
@@ -52,6 +52,7 @@ ip tcp synwait-time 5
 !
 !
 interface Ethernet0/0
+ description test
  ip address dhcp
  half-duplex
 !

@@ -1,31 +1,97 @@
-from github import Github
-g = Github("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")
+Building configuration...
 
-for repo in g.get_user().get_repos():
-        print(repo.name)
-
-repo = g.get_repo("n01521239/wirelessproject")
-
-all_files = []
-contents = repo.get_contents("")
-while contents:
-    file_content = contents.pop(0)
-    if file_content.type == "dir":
-        contents.extend(repo.get_contents(file_content.path))
-    else:
-        file = file_content
-        all_files.append(str(file).replace('ContentFile(path="','').replace('")',''))
-
-with open("C:/Users/kshar/Desktop/Project.py") as file:
-    content = file.read()
-
-# Upload to github
-git_prefix = 'folder1/'
-git_file = git_prefix + 'file.txt'
-if git_file in all_files:
-    contents = repo.get_contents(git_file)
-    repo.update_file(contents.path, "committing files", content, contents.sha, branch="main")
-    print(git_file + ' UPDATED')
-else:
-    repo.create_file(git_file, "committing files", content, branch="main")
-    print(git_file + ' CREATED')
+Current configuration : 969 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$.MJi$FU46tEiLX5dYuuEncTUXa.
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+ip cef
+!
+!
+!
+!
+no ip domain lookup
+ip domain name cisco.com
+ip auth-proxy max-nodata-conns 3
+ip admission max-nodata-conns 3
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username wireless password 0 cisco
+!
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+interface Ethernet0/0
+ ip address dhcp
+ half-duplex
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+no cdp log mismatch duplex
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ login local
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 3
+ login local
+ transport input ssh
+line vty 4
+ password cisco 
+ login local
+ transport input ssh
+!
+!
+end

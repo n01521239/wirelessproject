@@ -1,6 +1,6 @@
 Building configuration...
 
-Current configuration : 969 bytes
+Current configuration : 911 bytes
 !
 version 12.4
 service timestamps debug datetime msec
@@ -12,7 +12,7 @@ hostname R1
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$.MJi$FU46tEiLX5dYuuEncTUXa.
+enable secret 5 $1$.mFd$UAA4HxAN6cLfdaBSL/Uat.
 !
 no aaa new-model
 no ip icmp rate-limit unreachable
@@ -46,6 +46,7 @@ username wireless password 0 cisco
 !
 !
 ip tcp synwait-time 5
+ip ssh version 2
 ! 
 !
 !
@@ -80,16 +81,11 @@ line con 0
  exec-timeout 0 0
  privilege level 15
  logging synchronous
- login local
 line aux 0
  exec-timeout 0 0
  privilege level 15
  logging synchronous
-line vty 0 3
- login local
- transport input ssh
-line vty 4
- password cisco 
+line vty 0 4
  login local
  transport input ssh
 !

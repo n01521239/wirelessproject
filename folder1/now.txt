@@ -1,8 +1,9 @@
 Building configuration...
 
-Current configuration : 847 bytes
+Current configuration : 862 bytes
 !
 version 12.4
+service config
 service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
@@ -12,7 +13,7 @@ hostname R1
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$XDgh$KjK6Vmv9xtKAdPZ/qGorv/
+enable secret 5 $1$OyYJ$EUus0b6mlphQfotOXcFFO0
 !
 no aaa new-model
 memory-size iomem 5
@@ -37,7 +38,7 @@ multilink bundle-name authenticated
 !
 !
 !
-username wireless password 7 094F471A1A0A
+username wireless password 7 14141B180F0B
 archive
  log config
   hidekeys

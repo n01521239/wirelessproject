@@ -1,6 +1,6 @@
 Building configuration...
 
-Current configuration : 862 bytes
+Current configuration : 887 bytes
 !
 version 12.4
 service config
@@ -51,6 +51,7 @@ archive
 !
 !
 interface FastEthernet0/0
+ description hello world
  ip address dhcp
  duplex auto
  speed auto

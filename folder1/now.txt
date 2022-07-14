@@ -1,6 +1,6 @@
 Building configuration...
 
-Current configuration : 881 bytes
+Current configuration : 862 bytes
 !
 version 12.4
 service config
@@ -13,7 +13,7 @@ hostname R1
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$OyYJ$EUus0b6mlphQfotOXcFFO0
+enable secret 5 $1$08At$IywaBQP2CFQPAoleSmqt5.
 !
 no aaa new-model
 memory-size iomem 5
@@ -38,7 +38,7 @@ multilink bundle-name authenticated
 !
 !
 !
-username wireless password 7 14141B180F0B
+username wireless password 7 00071A150754
 archive
  log config
   hidekeys
@@ -51,7 +51,6 @@ archive
 !
 !
 interface FastEthernet0/0
- description hello
  ip address dhcp
  duplex auto
  speed auto
@@ -88,7 +87,7 @@ line con 0
  login local
 line aux 0
 line vty 0 4
- password 7 14141B180F0B
+ password 7 094F471A1A0A
  login local
  transport input ssh
 !

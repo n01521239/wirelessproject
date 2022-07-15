@@ -1,9 +1,8 @@
 Building configuration...
 
-Current configuration : 862 bytes
+Current configuration : 1132 bytes
 !
 version 12.4
-service config
 service timestamps debug datetime msec
 service timestamps log datetime msec
 service password-encryption
@@ -13,17 +12,20 @@ hostname R1
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$08At$IywaBQP2CFQPAoleSmqt5.
+enable secret 5 $1$uPJ9$bNvTrCDv2EqQzbbdFXQpo/
 !
 no aaa new-model
 memory-size iomem 5
+no ip icmp rate-limit unreachable
 !
 !
 ip cef
+no ip domain lookup
 ip domain name cisco.com
 !
 !
-multilink bundle-name authenticated
+ip auth-proxy max-nodata-conns 3
+ip admission max-nodata-conns 3
 !
 !
 !
@@ -38,37 +40,37 @@ multilink bundle-name authenticated
 !
 !
 !
-username wireless password 7 00071A150754
-archive
- log config
-  hidekeys
+!
+username wireless password 7 104D000A0618
+!
+!
+ip tcp synwait-time 5
+ip ssh time-out 15
+ip ssh authentication-retries 2
+ip ssh version 2
 ! 
 !
 !
 !
 !
-!
-!
-!
 interface FastEthernet0/0
- ip address dhcp
- duplex auto
- speed auto
-!
-interface FastEthernet0/1
  no ip address
  shutdown
  duplex auto
  speed auto
 !
+interface FastEthernet0/1
+ ip address dhcp
+ duplex auto
+ speed auto
 !
-ip http server
+no ip http server
 no ip http secure-server
 ip forward-protocol nd
 !
 !
 !
-!
+no cdp log mismatch duplex
 !
 !
 !
@@ -83,11 +85,17 @@ control-plane
 !
 !
 line con 0
+ exec-timeout 0 0
+ privilege level 15
  logging synchronous
  login local
 line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
 line vty 0 4
- password 7 094F471A1A0A
+ privilege level 15
+ password 7 0822455D0A16
  login local
  transport input ssh
 !
